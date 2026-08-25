@@ -63,8 +63,9 @@ export default function ProjectsPage() {
   return (
     <>
       <section className="relative bg-primary py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image src="/images/brand/logo-icon.svg" alt="" width={300} height={300} className="absolute -top-20 -right-20" />
+        <div className="absolute inset-0">
+          <Image src="/images/hero/projects.jpg" alt="" fill className="object-cover opacity-25" priority />
+          <div className="absolute inset-0 bg-primary/60" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <p className="text-accent-red font-semibold tracking-widest uppercase text-sm mb-4">Our Work</p>
