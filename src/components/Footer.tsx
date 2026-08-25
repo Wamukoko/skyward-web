@@ -29,10 +29,11 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/images/brand/logo-icon.svg"
+                src="/images/brand/SkywardLogo-300x300.png"
                 alt="Skyward Media"
                 width={36}
                 height={36}
+                className="rounded-full"
               />
               <span className="text-white font-bold text-lg">Skyward Media</span>
             </Link>
