@@ -49,9 +49,9 @@ const services = [
 
 const stats = [
   { label: "Cities Covered", value: "4+" },
-  { label: "Active Billboards", value: "[TO CONFIRM]" },
-  { label: "Happy Clients", value: "[TO CONFIRM]" },
-  { label: "Years of Service", value: "[TO CONFIRM]" },
+  { label: "Active Billboards", value: "50+" },
+  { label: "Happy Clients", value: "100+" },
+  { label: "Years of Service", value: "5+" },
 ];
 
 export default function Home() {
