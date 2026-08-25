@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     "billboard fabrication Kenya",
     "outdoor media Kenya",
   ],
+  icons: {
+    icon: "/images/brand/SkywardLogo-300x300.png",
+  },
   openGraph: {
     title: "Skyward Media Limited — Elegance In The Sky",
     description:
