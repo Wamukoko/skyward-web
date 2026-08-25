@@ -31,7 +31,7 @@ export default function Header() {
               height={40}
               className="transition-transform group-hover:scale-110 rounded-full"
             />
-            <span className="hidden sm:block text-white font-bold text-lg tracking-tight">
+            <span className="text-white font-bold text-base sm:text-lg tracking-tight">
               Skyward Media
             </span>
           </Link>
