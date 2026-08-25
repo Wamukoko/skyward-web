@@ -43,6 +43,12 @@ export default function AdminPage() {
   const [isCreating, setIsCreating] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const slugify = (text: string) =>
+    text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -67,15 +73,32 @@ export default function AdminPage() {
   const handleSavePost = async () => {
     if (!editingPost) return;
     try {
-      const res = await fetch(`/api/posts/${editingPost.slug}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editingPost),
-      });
-      if (res.ok) {
-        setEditingPost(null);
-        setIsCreating(false);
-        fetchData();
+      const postToSave = {
+        ...editingPost,
+        slug: editingPost.slug || slugify(editingPost.title),
+      };
+      if (isCreating) {
+        const res = await fetch("/api/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(postToSave),
+        });
+        if (res.ok) {
+          setEditingPost(null);
+          setIsCreating(false);
+          fetchData();
+        }
+      } else {
+        const res = await fetch(`/api/posts/${postToSave.slug}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(postToSave),
+        });
+        if (res.ok) {
+          setEditingPost(null);
+          setIsCreating(false);
+          fetchData();
+        }
       }
     } catch (error) {
       console.error("Failed to save post:", error);
@@ -95,15 +118,32 @@ export default function AdminPage() {
   const handleSavePartner = async () => {
     if (!editingPartner) return;
     try {
-      const res = await fetch(`/api/partners/${editingPartner.slug}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editingPartner),
-      });
-      if (res.ok) {
-        setEditingPartner(null);
-        setIsCreating(false);
-        fetchData();
+      const partnerToSave = {
+        ...editingPartner,
+        slug: editingPartner.slug || slugify(editingPartner.name),
+      };
+      if (isCreating) {
+        const res = await fetch("/api/partners", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(partnerToSave),
+        });
+        if (res.ok) {
+          setEditingPartner(null);
+          setIsCreating(false);
+          fetchData();
+        }
+      } else {
+        const res = await fetch(`/api/partners/${partnerToSave.slug}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(partnerToSave),
+        });
+        if (res.ok) {
+          setEditingPartner(null);
+          setIsCreating(false);
+          fetchData();
+        }
       }
     } catch (error) {
       console.error("Failed to save partner:", error);
